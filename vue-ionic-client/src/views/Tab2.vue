@@ -11,18 +11,16 @@
           <ion-title size="large">Add</ion-title>
         </ion-toolbar>
       </ion-header>
-      
-      <ExploreContainer name="Add page" />
+
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '../components/ExploreContainer.vue';
 
 export default  {
   name: 'Tab2',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
 }
 </script>
