@@ -9,7 +9,7 @@
     <ion-content :fullscreen="true">
       <ion-list >
         <ion-item v-for="(item, index) in tutorials" :key="index">
-            <TutorialListItem :key="index" :tutorial="item" />
+            <TutorialListItem :key="item.id" :tutorial="item" />
         </ion-item>
       </ion-list>
     </ion-content>

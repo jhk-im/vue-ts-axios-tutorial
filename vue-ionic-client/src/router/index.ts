@@ -28,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Tab3.vue')
       }
     ]
+  },
+  {
+    path: '/tutorial/:id',
+    component: () => import('@/views/TutorialDetail.vue'),
+    props: true
   }
 ]
 
