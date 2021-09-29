@@ -80,6 +80,9 @@ export default defineComponent({
   },
   mounted() {
     this.retrieveTutorials();
+  },
+  updated() {
+    this.refreshList();
   }
 });
 </script> 
