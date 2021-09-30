@@ -4,8 +4,11 @@ const cors = require("cors");
 
 const app = express();
 
+// node server.js
 var corsOptions = {
-  origin: "http://localhost:8081"
+  // 192.168.1.33 -> WIFI
+  origin: "http://192.168.1.33:8081"
+  //origin: "http://localhost:8081"
 };
 
 app.use(cors(corsOptions));

@@ -6,7 +6,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="false">
       <ion-list >
         <ion-item v-for="(item, index) in tutorials" :key="index">
             <TutorialListItem :key="item.id" :tutorial="item" />
@@ -25,22 +25,20 @@ import {
   IonContent, 
   IonList,
   IonItem
-  } from '@ionic/vue';
-import TutorialListItem from '../components/TutorialListItem.vue';
+} from '@ionic/vue';
 import { defineComponent } from 'vue';
+import TutorialListItem from '../components/TutorialListItem.vue';
 import TutorialDataService from '../services/TutorialDataService';
 
 export default defineComponent({
   name: 'Tab1',
   data() {
     return {
-      tutorials: [],
-      currentMessage: null,
-      currentIndex: -1
+      tutorials: []
     }
   },
   methods: {
-    retrieveTutorials() {
+    getTutorials() {
       TutorialDataService.getAll()
         .then(response => {
           this.tutorials = response.data;
@@ -51,22 +49,22 @@ export default defineComponent({
         });
     },
 
-    refreshList() {
-      this.retrieveTutorials();
-      this.currentMessage = null;
-      this.currentIndex = -1;
-    },
-
     removeAllTutorials() {
       TutorialDataService.deleteAll()
         .then(response => {
-          this.refreshList();
+          this.getTutorials();
           console.log(response.data);
         })
         .catch(e => {
             console.log(e)
         });
     },
+  },
+  mounted() {
+    this.getTutorials();
+  },
+  updated() {
+    this.getTutorials();
   },
   components: { 
     TutorialListItem, 
@@ -77,12 +75,6 @@ export default defineComponent({
     IonPage, 
     IonList,
     IonItem
-  },
-  mounted() {
-    this.retrieveTutorials();
-  },
-  updated() {
-    this.refreshList();
   }
 });
 </script> 
